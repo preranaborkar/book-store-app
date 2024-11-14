@@ -16,7 +16,7 @@ function Login() {
       password: data.password,
     };
     await axios
-      .post("https://book-store-app-182h.onrender.com/user/login", userInfo)
+      .post("https://book-store-app-k433.onrender.com/login", userInfo)
       .then((res) => {
         console.log(res.data);
         if (res.data) {
@@ -91,7 +91,7 @@ function Login() {
               <button className="bg-pink-500 text-white rounded-md px-3 py-1 hover:bg-pink-700 duration-200">
                 Login
               </button>
-              <p>
+              <div>
                 Not registered?{" "}
                 <Link
                   to="/signup"
@@ -99,7 +99,7 @@ function Login() {
                 >
                   Signup
                 </Link>{" "}
-              </p>
+              </div>
             </div>
           </form>
         </div>

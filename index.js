@@ -13,11 +13,16 @@ import userRoute from "./route/user.route.js";
 // const __dirname=path.dirname(__filename);
 
 
+
 const app = express();
 
 app.use(cors());
 app.use(express.json());
-
+app.use(cors({
+    origin: 'http://localhost:5173/', // Replace with your frontend URL
+    methods: 'GET, POST, PUT, DELETE',
+    credentials: true // Include this if cookies are involved
+  }));
 // app.use(express.static(path.join(__dirname,'/Frontend/dist')))
 
 // app.get('*',(req,res)=> res.sendFile(path.join(__dirname,'/Frontend/dist/index.html'))
@@ -30,14 +35,13 @@ const URI = process.env.MongoDBURI;
 
 // connect to mongoDB
 try {
-    mongoose.connect(URI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    });
+    mongoose.connect(URI);
     console.log("Connected to mongoDB");
 } catch (error) {
     console.log("Error: ", error);
 }
+
+
 
 // defining routes
 app.use("/book", bookRoute);

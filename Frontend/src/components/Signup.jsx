@@ -20,22 +20,19 @@ function Signup() {
       email: data.email,
       password: data.password,
     };
-    await axios
-      .post("https://book-store-app-182h.onrender.com/user/signup", userInfo)
-      .then((res) => {
-        console.log(res.data);
-        if (res.data) {
-          toast.success("Signup Successfully");
-          navigate(from, { replace: true });
-        }
+    try {
+      const res = await axios.post("https://book-store-app-k433.onrender.com/user/signup", userInfo);
+      if (res.data) {
+        toast.success("Signup Successfully");
         localStorage.setItem("Users", JSON.stringify(res.data.user));
-      })
-      .catch((err) => {
-        if (err.response) {
-          console.log(err);
-          toast.error("Error: " + err.response.data.message);
-        }
-      });
+        navigate(from, { replace: true });
+      }
+    } catch (err) {
+      if (err.response) {
+        toast.error("Error: " + err.response.data.message);
+      }
+    }
+  
   };
   return (
     <>
@@ -90,7 +87,7 @@ function Signup() {
                 <span>Password</span>
                 <br />
                 <input
-                  type="text"
+                  type="password"
                   placeholder="Enter your password"
                   className="w-80 px-3 py-1 border rounded-md outline-none"
                   {...register("password", { required: true })}
