@@ -21,7 +21,7 @@ function Signup() {
       password: data.password,
     };
     try {
-      const res = await axios.post("https://book-store-app-k433.onrender.com/user/signup", userInfo);
+      const res = await axios.post("https://book-store-app-winx.onrender.com/user/signup", userInfo);
       if (res.data) {
         toast.success("Signup Successfully");
         localStorage.setItem("Users", JSON.stringify(res.data.user));

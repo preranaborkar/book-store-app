@@ -9,11 +9,11 @@ import axios from "axios";
 import Cards from "./Cards";
 function Freebook() {
   
-  const [book, setBook] = useState([]);
+  const [books, setBook] = useState([]);
   useEffect(() => {
     const getBook = async () => {
       try {
-        const res = await axios.get("https://book-store-app-k433.onrender.com/book");
+        const res = await axios.get("https://book-store-app-winx.onrender.com/book");
         console.log("API Response:", res.data);  // Log the full response
         setBook(res.data);  // Set all books without filtering
       } catch (error) {
@@ -72,7 +72,7 @@ function Freebook() {
 
         <div>
           <Slider {...settings}>
-            {book.map((item) => (
+            {books.map((item) => (
                <Cards item={item} key={item.id} />
             ))}
           </Slider>
