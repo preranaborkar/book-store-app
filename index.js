@@ -32,6 +32,7 @@ dotenv.config();
 
 const PORT = process.env.PORT || 8080;
 const URI = process.env.MongoDBURI;
+mongoose.set('debug', true); // Enables debug mode to log all queries
 
 // connect to mongoDB
 try {
