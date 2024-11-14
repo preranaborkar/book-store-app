@@ -19,7 +19,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(cors({
-    origin: 'http://localhost:5173/', // Replace with your frontend URL
+    origin: 'https://book-front-beta.vercel.app/', // Replace with your frontend URL
     methods: 'GET, POST, PUT, DELETE',
     credentials: true // Include this if cookies are involved
   }));
